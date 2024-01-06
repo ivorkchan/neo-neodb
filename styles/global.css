@@ -75,19 +75,29 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* scroll bar */
   .myscroll::-webkit-scrollbar {
     height: 6px;
     width: 6px;
     -webkit-border-radius: 1ex;
     @apply bg-transparent;
   }
-
   .myscroll:hover::-webkit-scrollbar {
     @apply bg-muted;
   }
-
   .myscroll:hover::-webkit-scrollbar-thumb {
     -webkit-border-radius: 1ex;
     @apply bg-border;
+  }
+  
+  /* truncare for multilines */
+  .truncate-multiline {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10;
   }
 }

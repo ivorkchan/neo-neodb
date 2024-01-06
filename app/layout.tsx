@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+
 import { Provider } from '@/components/provider'
 
 import '@/styles/global.css'
