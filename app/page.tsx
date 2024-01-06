@@ -29,7 +29,7 @@ export default async function Home() {
                 {Object.entries(categoriesConfig[category]).map(
                   ([type, title]) => (
                     <TabsTrigger key={type} value={type}>
-                      {title}
+                      {title.toString()}
                     </TabsTrigger>
                   ),
                 )}

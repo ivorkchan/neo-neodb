@@ -11,15 +11,11 @@
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.0.3",
-    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-scroll-area": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "embla-carousel-react": "8.0.0-rc18",
-    "eslint-plugin-format": "^0.1.0",
-    "lucide-react": "^0.306.0",
     "next": "14.0.4",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
@@ -38,6 +34,7 @@
     "autoprefixer": "^10.4.16",
     "eslint": "^8.56.0",
     "eslint-config-next": "14.0.4",
+    "eslint-plugin-format": "^0.1.0",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
