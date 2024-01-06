@@ -1,0 +1,20 @@
+{
+  "book": {
+    "wishlist": "To Read",
+    "progress": "Reading",
+    "complete": "Finished"
+  },
+  "tv": {
+    "wishlist": "To Watch",
+    "progress": "Watching",
+    "complete": "Finished"
+  },
+  "movie": {
+    "wishlist": "To Watch",
+    "complete": "Watched"
+  },
+  "music": {
+    "wishlist": "To Listen",
+    "complete": "Listened"
+  }
+}
