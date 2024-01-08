@@ -6,7 +6,7 @@ import '@/styles/global.css'
 
 export const metadata: Metadata = {
   title: 'NeoDB - Ivork',
-  description: 'Books, tv, movies, and music.',
+  description: 'My digital garden.',
 }
 
 export default function RootLayout({
@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="font-sans antialiased">
         <Provider>
-          <main>{children}</main>
+          {children}
         </Provider>
       </body>
     </html>

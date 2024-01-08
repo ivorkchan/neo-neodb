@@ -1,11 +1,12 @@
 import React from 'react'
+import dynamic from 'next/dynamic'
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Card, CardContent } from '@/components/ui/card'
 
-import { ItemList } from '@/components/itemlist'
-
 import categoriesConfig from '@/categoriesConfig.json'
+
+const ItemList = dynamic(() => import('../components/itemlist'), { ssr: false, loading: () => <div className="font-bold text-2xl">LOADING</div> })
 
 export default async function Home() {
   const categoriesData = {}
@@ -21,18 +22,14 @@ export default async function Home() {
 
         return (
           <div key={category}>
-            <div className="mb-4 font-bold text-2xl uppercase">
-              {category.charAt(0) + category.slice(1)}
-            </div>
+            <div className="mb-4 font-bold text-2xl uppercase">{category.charAt(0) + category.slice(1)}</div>
             <Tabs defaultValue={defaultTab} className="w-full">
               <TabsList>
-                {Object.entries(categoriesConfig[category]).map(
-                  ([type, title]) => (
-                    <TabsTrigger key={type} value={type}>
-                      {title.toString()}
-                    </TabsTrigger>
-                  ),
-                )}
+                {Object.entries(categoriesConfig[category]).map(([type, title]) => (
+                  <TabsTrigger key={type} value={type}>
+                    {title.toString()}
+                  </TabsTrigger>
+                ))}
               </TabsList>
               {Object.entries(categoriesConfig[category]).map(([type]) => (
                 <TabsContent key={type} value={type}>
@@ -40,19 +37,10 @@ export default async function Home() {
                     <CardContent className="pt-6">
                       {category === 'music'
                         ? (
-                          <ItemList
-                            items={
-                            items[type + category.charAt(0) + category.slice(1)]
-                          }
-                            imageAspectRatio={1 / 1}
-                          />
+                          <ItemList items={items[type + category.charAt(0) + category.slice(1)]} imageAspectRatio={1 / 1} />
                           )
                         : (
-                          <ItemList
-                            items={
-                            items[type + category.charAt(0) + category.slice(1)]
-                          }
-                          />
+                          <ItemList items={items[type + category.charAt(0) + category.slice(1)]} />
                           )}
                     </CardContent>
                   </Card>
@@ -73,10 +61,7 @@ async function getItems(category, types) {
 
   for (const type of types) {
     const typeKey = type + category.charAt(0) + category.slice(1)
-    items[typeKey] = await fetchAndMergeData([
-      `${baseApiUrl}${type}?category=${category}&page=1`,
-      `${baseApiUrl}${type}?category=${category}&page=2`,
-    ])
+    items[typeKey] = await fetchAndMergeData([`${baseApiUrl}${type}?category=${category}&page=1`, `${baseApiUrl}${type}?category=${category}&page=2`])
   }
 
   return items
