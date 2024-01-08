@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Image from 'next/image'
 
 import { FiArrowUpRight } from 'react-icons/fi'
@@ -15,6 +15,29 @@ import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, D
 export default function ItemList({ items, imageAspectRatio = 2 / 3 }) {
   const isDesktop = useClientSideMediaQuery('(min-width: 768px)')
   const scrollContainer = useRef(null)
+
+  useEffect(() => {
+    if (isDesktop) {
+      const handleWheel = (event) => {
+        if (scrollContainer.current && event.deltaY !== 0) {
+          event.preventDefault()
+          scrollContainer.current.scrollLeft += event.deltaY
+        }
+      }
+
+      const currentContainer = scrollContainer.current
+      if (currentContainer) {
+        currentContainer.addEventListener('wheel', handleWheel, {
+          passive: false,
+        })
+      }
+
+      return () => {
+        if (currentContainer)
+          currentContainer.removeEventListener('wheel', handleWheel)
+      }
+    }
+  }, [isDesktop])
 
   const renderItems = () => {
     return items.map((item, index) =>
