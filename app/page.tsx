@@ -1,6 +1,8 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
 
+import { FaBilibili, FaBookOpen, FaFilm, FaRadio } from 'react-icons/fa6'
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Card, CardContent } from '@/components/ui/card'
 
@@ -11,6 +13,13 @@ const ItemList = dynamic(() => import('../components/itemlist'), {
   loading: () => <div className="font-bold text-2xl">LOADING</div>,
 })
 
+const categoryIcons = {
+  book: <FaBookOpen className="w-6 h-6 px-1" />,
+  tv: <FaBilibili className="w-6 h-6 px-1" />,
+  movie: <FaFilm className="w-6 h-6 px-1" />,
+  music: <FaRadio className="w-6 h-6 px-1" />,
+}
+
 export default async function Home() {
   const categoriesData = {}
   for (const category in categoriesConfig) {
@@ -19,29 +28,40 @@ export default async function Home() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col gap-24 mx-auto py-36 px-6 lg:max-w-4xl">
+    <main className="min-h-screen mx-auto flex flex-col gap-16 lg:gap-24 py-32 lg:py-48 px-4 lg:px-6 lg:max-w-4xl">
       {Object.entries(categoriesData).map(([category, items]) => {
         const defaultTab = Object.keys(categoriesConfig[category])[0]
+        const IconComponent = categoryIcons[category]
 
         return (
           <div key={category}>
-            <div className="mb-4 font-extrabold text-2xl uppercase">
+            {/* <div className="mb-4 font-extrabold text-3xl uppercase text-white/80">
               {category.charAt(0) + category.slice(1)}
-            </div>
-            <Tabs defaultValue={defaultTab} className="w-full">
-              <TabsList>
-                {Object.entries(categoriesConfig[category]).map(
-                  ([type, title]) => (
-                    <TabsTrigger key={type} value={type}>
-                      {title.toString()}
-                    </TabsTrigger>
-                  ),
-                )}
+            </div> */}
+            <Tabs defaultValue={defaultTab} className="w-full flex flex-col">
+              <TabsList className="self-end flex justify-between w-full bg-transparent font-mono text-white/40">
+                <div className="text-white/40 px-3 lg:px-4 py-2 font-medium hidden lg:flex lg:gap-2">
+                  {IconComponent}
+                  {category.charAt(0) + category.slice(1)}
+                </div>
+                <div>
+                  {Object.entries(categoriesConfig[category]).map(
+                    ([type, title]) => (
+                      <TabsTrigger
+                        key={type}
+                        value={type}
+                        className="text-sm lg:text-base"
+                      >
+                        {title.toString()}
+                      </TabsTrigger>
+                    ),
+                  )}
+                </div>
               </TabsList>
               {Object.entries(categoriesConfig[category]).map(([type]) => (
                 <TabsContent key={type} value={type}>
-                  <Card>
-                    <CardContent className="pt-6">
+                  <Card className="group bg-transparent hover:backdrop-blur hover:bg-white/20 border border-white/20 transition duration-300">
+                    <CardContent className="pt-4 pb-[10px] lg:pb-[9px]">
                       {category === 'music'
                         ? (
                           <ItemList
@@ -97,9 +117,7 @@ async function fetchAndMergeData(urls) {
   }
 
   try {
-    const responses = await Promise.all(
-      urls.map(url => fetch(url, options)),
-    )
+    const responses = await Promise.all(urls.map(url => fetch(url, options)))
     const dataArrays = await Promise.all(responses.map(res => res.json()))
     return dataArrays
       .flat()

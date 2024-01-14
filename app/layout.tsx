@@ -19,6 +19,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <Provider>
           {children}
+          <div className="mybg fixed inset-0 w-dvw h-dvw -z-10" />
         </Provider>
       </body>
     </html>

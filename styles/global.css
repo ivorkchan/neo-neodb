@@ -35,7 +35,7 @@
     --radius: 0.5rem;
   }
 
-  @media (prefers-color-scheme: dark) {
+  /* @media (prefers-color-scheme: dark) {
     :root {
       --background: 0 0% 3.9%;
       --foreground: 0 0% 98%;
@@ -65,7 +65,7 @@
       --input: 0 0% 14.9%;
       --ring: 0 0% 83.1%;
     }
-  }
+  } */
 }
 
 @layer base {
@@ -76,6 +76,26 @@
     @apply bg-background text-foreground;
   }
 
+  .mybg {
+    background-color: hsl(var(--background));
+    opacity: 0.9;
+    background-image: radial-gradient(
+        rgba(255, 255, 255, 0.1) 0.5px,
+        transparent 0.5px
+      ),
+      radial-gradient(rgba(0, 0, 0, 0.8) 0.5px, #000000 0.5px);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+  }
+
+  .mytab {
+    text-decoration: underline;
+    text-decoration-color: #ea580c;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+    @apply text-white/80
+  }
+
   /* scroll bar */
   .myscroll::-webkit-scrollbar {
     height: 6px;
@@ -84,14 +104,14 @@
     @apply bg-transparent;
   }
   .myscroll:hover::-webkit-scrollbar {
-    @apply bg-muted;
+    @apply bg-white/20;
   }
   .myscroll:hover::-webkit-scrollbar-thumb {
     -webkit-border-radius: 1ex;
-    @apply bg-border;
+    @apply bg-white/80;
   }
-  
-  /* truncare for multilines */
+
+  /* truncate for multilines */
   .truncate-multiline {
     display: -webkit-box;
     overflow: hidden;
