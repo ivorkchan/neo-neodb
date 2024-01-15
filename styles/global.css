@@ -69,13 +69,25 @@
 }
 
 @layer base {
+  /* basic reset */
   * {
+    box-sizing: border-box;
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
   }
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
 
+  /* custom styles */
   .mybg {
     background-image: radial-gradient(
         rgba(255, 255, 255, 0.3) 0.5px,
@@ -85,13 +97,15 @@
     background-size: 48px 48px;
     background-position: 0 0, 24px 24px;
   }
-
   .mytab {
     text-decoration: underline;
-    text-decoration-color: #ea580c;
+    text-decoration-color: transparent;
     text-decoration-thickness: 2px;
     text-underline-offset: 8px;
-    @apply text-white/80
+  }
+  .mytab-active {
+    text-decoration-color: #ea580c;
+    @apply text-white/80;
   }
 
   /* scroll bar */

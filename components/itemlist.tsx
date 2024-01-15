@@ -61,7 +61,7 @@ export default function ItemList({ items, imageAspectRatio = 2 / 3 }) {
         ? (
           <Dialog key={index}>
             <DialogTrigger>
-              <div className="w-[80px] flex flex-col items-center">
+              <div className="w-[80px]">
                 <AspectRatio ratio={imageAspectRatio}>
                   <Image
                     src={item.item.cover_image_url}
@@ -71,7 +71,8 @@ export default function ItemList({ items, imageAspectRatio = 2 / 3 }) {
                       : item.item.title
                   }
                     fill
-                    className="grayscale opacity-40 rounded-md object-cover transition duration-300 group-hover:grayscale-0 group-hover:opacity-100 group-hover:shadow-md"
+                    className="rounded-md object-cover grayscale group-hover:grayscale-0 opacity-40 group-hover:opacity-100 group-hover:shadow-md transition duration-300"
+                    loading="lazy"
                   />
                 </AspectRatio>
               </div>
@@ -101,7 +102,7 @@ export default function ItemList({ items, imageAspectRatio = 2 / 3 }) {
         : (
           <Drawer key={index}>
             <DrawerTrigger>
-              <div className="group w-[60px] flex flex-col items-center">
+              <div className="w-[60px]">
                 <AspectRatio ratio={imageAspectRatio}>
                   <Image
                     src={item.item.cover_image_url}
@@ -111,14 +112,15 @@ export default function ItemList({ items, imageAspectRatio = 2 / 3 }) {
                       : item.item.title
                   }
                     fill
-                    className="rounded-md object-cover shadow-md"
+                    className="rounded-md object-cover"
+                    loading="lazy"
                   />
                 </AspectRatio>
               </div>
             </DrawerTrigger>
             <DrawerContent>
               <DrawerHeader>
-                <DrawerTitle className="mb-2">{item.item.title}</DrawerTitle>
+                <DrawerTitle>{item.item.title}</DrawerTitle>
                 <DrawerDescription className="truncate-multiline">
                   {item.item.brief ? item.item.brief : 'No description.'}
                 </DrawerDescription>

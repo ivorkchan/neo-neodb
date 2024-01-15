@@ -28,17 +28,14 @@ export default async function Home() {
   }
 
   return (
-    <main className="min-h-screen mx-auto flex flex-col gap-16 lg:gap-24 py-32 lg:py-48 px-4 lg:px-6 lg:max-w-4xl">
+    <main className="min-h-screen flex flex-col gap-16 lg:gap-24 mx-auto py-32 lg:py-48 px-4 lg:px-6 lg:max-w-4xl">
       {Object.entries(categoriesData).map(([category, items]) => {
         const defaultTab = Object.keys(categoriesConfig[category])[0]
         const IconComponent = categoryIcons[category]
 
         return (
           <div key={category}>
-            {/* <div className="mb-4 font-extrabold text-3xl uppercase text-white/80">
-              {category.charAt(0) + category.slice(1)}
-            </div> */}
-            <Tabs defaultValue={defaultTab} className="w-full flex flex-col">
+            <Tabs defaultValue={defaultTab} className="w-full">
               <TabsList className="self-end flex justify-between w-full bg-transparent font-mono text-white/40">
                 <div className="text-white/40 px-3 lg:px-4 py-2 font-medium hidden lg:flex lg:gap-2">
                   {IconComponent}
@@ -60,7 +57,7 @@ export default async function Home() {
               </TabsList>
               {Object.entries(categoriesConfig[category]).map(([type]) => (
                 <TabsContent key={type} value={type}>
-                  <Card className="group bg-transparent hover:backdrop-blur-sm hover:bg-white/20 border border-white/20 transition duration-300">
+                  <Card className="group bg-transparent hover:bg-white/20 hover:backdrop-blur-sm border border-white/20 transition duration-300">
                     <CardContent className="pt-4 lg:pb-[9px]">
                       {category === 'music'
                         ? (
