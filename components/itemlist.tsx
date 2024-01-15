@@ -78,7 +78,7 @@ export default function ItemList({ items, imageAspectRatio = 2 / 3 }) {
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle className="mb-2">{item.item.title}</DialogTitle>
+                <DialogTitle>{item.item.title}</DialogTitle>
                 <DialogDescription className="truncate-multiline">
                   {item.item.brief ? item.item.brief : 'No description.'}
                 </DialogDescription>

@@ -77,15 +77,13 @@
   }
 
   .mybg {
-    background-color: hsl(var(--background));
-    opacity: 0.9;
     background-image: radial-gradient(
-        rgba(255, 255, 255, 0.1) 0.5px,
+        rgba(255, 255, 255, 0.3) 0.5px,
         transparent 0.5px
       ),
-      radial-gradient(rgba(0, 0, 0, 0.8) 0.5px, #000000 0.5px);
-    background-size: 40px 40px;
-    background-position: 0 0, 20px 20px;
+      radial-gradient(rgba(255, 255, 255, 0.1) 0.5px, #141414 0.5px);
+    background-size: 48px 48px;
+    background-position: 0 0, 24px 24px;
   }
 
   .mytab {
@@ -104,11 +102,11 @@
     @apply bg-transparent;
   }
   .myscroll:hover::-webkit-scrollbar {
-    @apply bg-white/20;
+    @apply bg-black/20;
   }
   .myscroll:hover::-webkit-scrollbar-thumb {
     -webkit-border-radius: 1ex;
-    @apply bg-white/80;
+    @apply bg-white/40;
   }
 
   /* truncate for multilines */
@@ -118,6 +116,6 @@
     text-overflow: ellipsis;
     white-space: normal;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 10;
+    -webkit-line-clamp: 15;
   }
 }

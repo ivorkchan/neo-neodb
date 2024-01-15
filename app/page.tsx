@@ -10,7 +10,7 @@ import categoriesConfig from '@/categoriesConfig.json'
 
 const ItemList = dynamic(() => import('../components/itemlist'), {
   ssr: false,
-  loading: () => <div className="font-bold text-2xl">LOADING</div>,
+  loading: () => <div className="text-white/80 font-mono">LOADING</div>,
 })
 
 const categoryIcons = {
@@ -60,8 +60,8 @@ export default async function Home() {
               </TabsList>
               {Object.entries(categoriesConfig[category]).map(([type]) => (
                 <TabsContent key={type} value={type}>
-                  <Card className="group bg-transparent hover:backdrop-blur hover:bg-white/20 border border-white/20 transition duration-300">
-                    <CardContent className="pt-4 pb-[10px] lg:pb-[9px]">
+                  <Card className="group bg-transparent hover:backdrop-blur-sm hover:bg-white/20 border border-white/20 transition duration-300">
+                    <CardContent className="pt-4 lg:pb-[9px]">
                       {category === 'music'
                         ? (
                           <ItemList

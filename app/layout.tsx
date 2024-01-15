@@ -4,6 +4,14 @@ import { Provider } from '@/components/provider'
 
 import '@/styles/global.css'
 
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#141414' },
+    { media: '(prefers-color-scheme: dark)', color: '#141414' },
+  ],
+  width: 'device-width',
+}
+
 export const metadata: Metadata = {
   title: 'NeoDB - Ivork',
   description: 'My digital garden.',
