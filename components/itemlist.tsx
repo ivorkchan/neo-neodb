@@ -1,13 +1,11 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react'
-import Image from 'next/image'
 
 import { FiArrowUpRight } from 'react-icons/fi'
 
 import useClientSideMediaQuery from '@/hooks/use-media-query'
 
-import { AspectRatio } from '@/components/ui/aspect-ratio'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -28,7 +26,7 @@ import {
   DrawerTrigger,
 } from '@/components/ui/drawer'
 
-export default function ItemList({ items, imageAspectRatio = 2 / 3 }) {
+export default function ItemList({ items }) {
   const isDesktop = useClientSideMediaQuery('(min-width: 768px)')
   const scrollContainer = useRef(null)
 
@@ -37,7 +35,7 @@ export default function ItemList({ items, imageAspectRatio = 2 / 3 }) {
       const handleWheel = (event) => {
         if (scrollContainer.current && event.deltaY !== 0) {
           event.preventDefault()
-          scrollContainer.current.scrollLeft += event.deltaY
+          scrollContainer.current.scrollTop += event.deltaY
         }
       }
 
@@ -61,20 +59,8 @@ export default function ItemList({ items, imageAspectRatio = 2 / 3 }) {
         ? (
           <Dialog key={index}>
             <DialogTrigger>
-              <div className="w-[80px]">
-                <AspectRatio ratio={imageAspectRatio}>
-                  <Image
-                    src={item.item.cover_image_url}
-                    alt={
-                    item.item.display_title
-                      ? item.item.display_title
-                      : item.item.title
-                  }
-                    fill
-                    className="rounded-md object-cover grayscale group-hover:grayscale-0 opacity-40 group-hover:opacity-100 group-hover:shadow-md transition duration-300"
-                    loading="lazy"
-                  />
-                </AspectRatio>
+              <div className="text-left">
+                {item.item.display_title}
               </div>
             </DialogTrigger>
             <DialogContent>
@@ -102,20 +88,8 @@ export default function ItemList({ items, imageAspectRatio = 2 / 3 }) {
         : (
           <Drawer key={index}>
             <DrawerTrigger>
-              <div className="w-[60px]">
-                <AspectRatio ratio={imageAspectRatio}>
-                  <Image
-                    src={item.item.cover_image_url}
-                    alt={
-                    item.item.display_title
-                      ? item.item.display_title
-                      : item.item.title
-                  }
-                    fill
-                    className="rounded-md object-cover"
-                    loading="lazy"
-                  />
-                </AspectRatio>
+              <div className="text-left">
+                {item.item.display_title}
               </div>
             </DrawerTrigger>
             <DrawerContent>
@@ -146,7 +120,7 @@ export default function ItemList({ items, imageAspectRatio = 2 / 3 }) {
   return (
     <div
       ref={scrollContainer}
-      className="myscroll grid grid-rows-2 grid-flow-col justify-start gap-4 lg:gap-6 lg:pb-[9px] overflow-x-scroll"
+      className="myscroll h-[240px] lg:h-[320px] flex flex-col justify-start gap-4 lg:gap-6 overflow-y-scroll"
     >
       {renderItems()}
     </div>

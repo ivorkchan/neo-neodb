@@ -89,13 +89,14 @@
 
   /* custom styles */
   .mybg {
-    background-image: radial-gradient(
+    /* background-image: radial-gradient(
         rgba(255, 255, 255, 0.3) 0.5px,
         transparent 0.5px
       ),
       radial-gradient(rgba(255, 255, 255, 0.1) 0.5px, #141414 0.5px);
     background-size: 48px 48px;
-    background-position: 0 0, 24px 24px;
+    background-position: 0 0, 24px 24px; */
+    background-color: #dcdcdc;
   }
   .mytab {
     text-decoration: underline;
@@ -104,8 +105,8 @@
     text-underline-offset: 8px;
   }
   .mytab-active {
-    text-decoration-color: #ea580c;
-    @apply text-white/80;
+    color: #141414;
+    text-decoration-color: #141414;
   }
 
   /* scroll bar */
@@ -116,11 +117,11 @@
     @apply bg-transparent;
   }
   .myscroll:hover::-webkit-scrollbar {
-    @apply bg-black/20;
+    @apply bg-black/10;
   }
   .myscroll:hover::-webkit-scrollbar-thumb {
     -webkit-border-radius: 1ex;
-    @apply bg-white/40;
+    @apply bg-black/10;
   }
 
   /* truncate for multilines */
