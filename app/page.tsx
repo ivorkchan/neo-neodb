@@ -8,7 +8,7 @@ import categoriesConfig from '@/categoriesConfig.json'
 
 const ItemList = dynamic(() => import('../components/itemlist'), {
   ssr: false,
-  loading: () => <div className="text-black/80">LOADING</div>,
+  loading: () => <div className="text-black/80 dark:text-white/80">LOADING</div>,
 })
 
 export default async function Home() {
@@ -19,17 +19,14 @@ export default async function Home() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col gap-16 lg:gap-24 mx-auto py-32 lg:py-48 px-4 lg:px-6 lg:max-w-xl">
+    <main className="min-h-screen flex flex-col gap-16 lg:gap-24 mx-auto py-32 lg:py-48 px-8 lg:px-6 lg:max-w-xl">
       {Object.entries(categoriesData).map(([category, items]) => {
         const defaultTab = Object.keys(categoriesConfig[category])[0]
 
         return (
           <div key={category}>
             <Tabs defaultValue={defaultTab} className="w-full">
-              <TabsList className="flex w-full bg-transparent text-black/40">
-                {/* <div className="text-black/80 px-3 lg:px-4 py-2 font-medium hidden lg:flex lg:gap-2">
-                  {category.charAt(0) + category.slice(1)}
-                </div> */}
+              <TabsList className="bg-transparent text-black/40">
                 <div>
                   {Object.entries(categoriesConfig[category]).map(
                     ([type, title]) => (
@@ -46,8 +43,8 @@ export default async function Home() {
               </TabsList>
               {Object.entries(categoriesConfig[category]).map(([type]) => (
                 <TabsContent key={type} value={type}>
-                  <Card className="bg-white border-none shadow-xl rounded-[18px]">
-                    <CardContent className="!p-8">
+                  <Card className="border-none shadow-xl rounded-2xl lg:rounded-3xl">
+                    <CardContent className="!p-6 lg:!p-8 lg:!pr-[26px]">
                       <ItemList
                         items={
                           items[type + category.charAt(0) + category.slice(1)]

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react'
 
-import { FiArrowUpRight } from 'react-icons/fi'
+import { ArrowTopRightIcon } from '@radix-ui/react-icons'
 
 import useClientSideMediaQuery from '@/hooks/use-media-query'
 
@@ -59,7 +59,7 @@ export default function ItemList({ items }) {
         ? (
           <Dialog key={index}>
             <DialogTrigger>
-              <div className="text-left">
+              <div className="text-left truncate">
                 {item.item.display_title}
               </div>
             </DialogTrigger>
@@ -78,7 +78,7 @@ export default function ItemList({ items }) {
                 >
                   <Button variant="outline">
                     <span className="mr-2">View on NeoDB</span>
-                    <FiArrowUpRight />
+                    <ArrowTopRightIcon />
                   </Button>
                 </a>
               </DialogFooter>
@@ -88,14 +88,14 @@ export default function ItemList({ items }) {
         : (
           <Drawer key={index}>
             <DrawerTrigger>
-              <div className="text-left">
+              <div className="text-left text-sm truncate">
                 {item.item.display_title}
               </div>
             </DrawerTrigger>
             <DrawerContent>
               <DrawerHeader>
                 <DrawerTitle>{item.item.title}</DrawerTitle>
-                <DrawerDescription className="truncate-multiline">
+                <DrawerDescription className="truncate-multiline text-left">
                   {item.item.brief ? item.item.brief : 'No description.'}
                 </DrawerDescription>
               </DrawerHeader>
@@ -107,7 +107,7 @@ export default function ItemList({ items }) {
                 >
                   <Button variant="outline">
                     <span className="mr-2">View on NeoDB</span>
-                    <FiArrowUpRight />
+                    <ArrowTopRightIcon />
                   </Button>
                 </a>
               </DrawerFooter>
@@ -120,7 +120,7 @@ export default function ItemList({ items }) {
   return (
     <div
       ref={scrollContainer}
-      className="myscroll h-[240px] lg:h-[320px] flex flex-col justify-start gap-4 lg:gap-6 overflow-y-scroll"
+      className="myscroll h-[200px] lg:h-[264px] flex flex-col justify-start gap-4 lg:gap-6 overflow-y-scroll"
     >
       {renderItems()}
     </div>
