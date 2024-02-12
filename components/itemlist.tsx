@@ -59,7 +59,7 @@ export default function ItemList({ items }) {
         ? (
           <Dialog key={index}>
             <DialogTrigger>
-              <div className="text-left truncate">
+              <div className="text-left truncate text-sm leading-6">
                 {item.item.display_title}
               </div>
             </DialogTrigger>
@@ -88,7 +88,7 @@ export default function ItemList({ items }) {
         : (
           <Drawer key={index}>
             <DrawerTrigger>
-              <div className="text-left text-sm truncate">
+              <div className="text-left truncate text-xs leading-6">
                 {item.item.display_title}
               </div>
             </DrawerTrigger>
@@ -120,7 +120,7 @@ export default function ItemList({ items }) {
   return (
     <div
       ref={scrollContainer}
-      className="myscroll h-[200px] lg:h-[264px] flex flex-col justify-start gap-4 lg:gap-6 overflow-y-scroll"
+      className="myscroll h-[168px] lg:h-[240px] flex flex-col overflow-y-scroll"
     >
       {renderItems()}
     </div>

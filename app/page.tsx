@@ -26,7 +26,7 @@ export default async function Home() {
         return (
           <div key={category}>
             <Tabs defaultValue={defaultTab} className="w-full">
-              <TabsList className="bg-transparent text-black/40">
+              <TabsList className="w-full bg-transparent text-black/40">
                 <div>
                   {Object.entries(categoriesConfig[category]).map(
                     ([type, title]) => (
@@ -43,7 +43,7 @@ export default async function Home() {
               </TabsList>
               {Object.entries(categoriesConfig[category]).map(([type]) => (
                 <TabsContent key={type} value={type}>
-                  <Card className="border-none shadow-xl rounded-2xl lg:rounded-3xl">
+                  <Card className="border-none shadow-xl rounded-xl lg:rounded-2xl">
                     <CardContent className="!p-6 lg:!p-8 lg:!pr-[26px]">
                       <ItemList
                         items={
