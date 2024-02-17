@@ -1,8 +1,7 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
 
-import Filter from '@/components/Filter'
-
+import Filter from '@/components/filter'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Card, CardContent } from '@/components/ui/card'
 
