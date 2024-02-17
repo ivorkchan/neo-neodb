@@ -1,6 +1,8 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
 
+import Filter from '@/components/Filter'
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Card, CardContent } from '@/components/ui/card'
 
@@ -63,53 +65,55 @@ export default async function Home() {
   //   </main>
   // )
   return (
-    <main className="min-h-screen px-4 lg:px-16 py-16 lg:w-[640px] blur-[0.5px]">
-      <Tabs defaultValue="book">
-        <TabsList className="bg-transparent text-black/40 h-6">
-          {Object.keys(categoriesData).map(category => (
-            <TabsTrigger
-              key={category}
-              value={category}
-              className="font-semibold text-sm lg:text-base"
-            >
-              {category}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+    <main className="min-h-screen px-4 mx-0 lg:mx-32 py-16 lg:w-[540px]">
+      <Filter>
+        <Tabs defaultValue="book">
+          <TabsList className="bg-transparent text-black/40 h-8">
+            {Object.keys(categoriesData).map(category => (
+              <TabsTrigger
+                key={category}
+                value={category}
+                className="text-base"
+              >
+                {category}
+              </TabsTrigger>
+            ))}
+          </TabsList>
 
-        {Object.entries(categoriesData).map(([category, items]) => (
-          <TabsContent key={category} value={category}>
-            <Tabs defaultValue={Object.keys(categoriesConfig[category])[0]}>
-              <TabsList className="bg-transparent text-black/40 h-6">
-                {Object.entries(categoriesConfig[category]).map(
-                  ([type, title]) => (
-                    <TabsTrigger
-                      key={type}
-                      value={type}
-                      className="font-semibold text-sm lg:text-base"
-                    >
-                      {title.toString()}
-                    </TabsTrigger>
-                  ),
-                )}
-              </TabsList>
-              {Object.entries(categoriesConfig[category]).map(([type]) => (
-                <TabsContent key={type} value={type}>
-                  <Card className="border-[#141414] rounded-none shadow-none my-16">
-                    <CardContent className="p-4">
-                      <ItemList
-                        items={
-                          items[type + category.charAt(0) + category.slice(1)]
-                        }
-                      />
-                    </CardContent>
-                  </Card>
-                </TabsContent>
-              ))}
-            </Tabs>
-          </TabsContent>
-        ))}
-      </Tabs>
+          {Object.entries(categoriesData).map(([category, items]) => (
+            <TabsContent key={category} value={category}>
+              <Tabs defaultValue={Object.keys(categoriesConfig[category])[0]}>
+                <TabsList className="bg-transparent text-black/40 h-8">
+                  {Object.entries(categoriesConfig[category]).map(
+                    ([type, title]) => (
+                      <TabsTrigger
+                        key={type}
+                        value={type}
+                        className="text-base"
+                      >
+                        {title.toString()}
+                      </TabsTrigger>
+                    ),
+                  )}
+                </TabsList>
+                {Object.entries(categoriesConfig[category]).map(([type]) => (
+                  <TabsContent key={type} value={type}>
+                    <Card className="border-[#141414] rounded-none shadow-none my-16">
+                      <CardContent className="p-4">
+                        <ItemList
+                          items={
+                            items[type + category.charAt(0) + category.slice(1)]
+                          }
+                        />
+                      </CardContent>
+                    </Card>
+                  </TabsContent>
+                ))}
+              </Tabs>
+            </TabsContent>
+          ))}
+        </Tabs>
+      </Filter>
     </main>
   )
 }

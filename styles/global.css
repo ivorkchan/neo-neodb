@@ -74,6 +74,8 @@
     @apply border-border;
   }
   body {
+    text-rendering: geometricPrecision;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.005);
     @apply bg-background text-foreground overflow-y-scroll;
   }
   h1,
@@ -98,14 +100,12 @@
 
   /* tab style */
   .mytab {
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 6px;
+    text-decoration: none;
   }
   .mytab-active {
     color: #141414;
-    text-decoration-color: #141414;
+    background-size: 100% 100%;
+    background-image: url("/circle.png");
   }
   @media (prefers-color-scheme: dark) {
     .mytab {
@@ -115,7 +115,6 @@
   @media (prefers-color-scheme: dark) {
     .mytab-active {
       color: #f5f5f5;
-      text-decoration-color: #f5f5f5;
     }
   }
 
@@ -127,7 +126,7 @@
     @apply bg-transparent;
   }
   :hover::-webkit-scrollbar {
-    @apply bg-black/10;
+    @apply bg-transparent;
   }
   :hover::-webkit-scrollbar-thumb {
     -webkit-border-radius: 1ex;

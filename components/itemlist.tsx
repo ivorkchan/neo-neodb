@@ -65,7 +65,7 @@ export default function ItemList({ items }) {
         : (
           <Drawer key={index}>
             <DrawerTrigger>
-              <div className="text-left truncate text-xs leading-6">
+              <div className="text-left truncate text-sm leading-6">
                 {item.item.display_title}
               </div>
             </DrawerTrigger>
