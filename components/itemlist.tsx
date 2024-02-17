@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 
 import { ArrowTopRightIcon } from '@radix-ui/react-icons'
 
@@ -30,43 +30,20 @@ export default function ItemList({ items }) {
   const isDesktop = useClientSideMediaQuery('(min-width: 768px)')
   const scrollContainer = useRef(null)
 
-  useEffect(() => {
-    if (isDesktop) {
-      const handleWheel = (event) => {
-        if (scrollContainer.current && event.deltaY !== 0) {
-          event.preventDefault()
-          scrollContainer.current.scrollTop += event.deltaY
-        }
-      }
-
-      const currentContainer = scrollContainer.current
-      if (currentContainer) {
-        currentContainer.addEventListener('wheel', handleWheel, {
-          passive: false,
-        })
-      }
-
-      return () => {
-        if (currentContainer)
-          currentContainer.removeEventListener('wheel', handleWheel)
-      }
-    }
-  }, [isDesktop])
-
   const renderItems = () => {
     return items.map((item, index) =>
       isDesktop
         ? (
           <Dialog key={index}>
             <DialogTrigger>
-              <div className="text-left truncate text-sm leading-6">
+              <div className="text-left truncate text-sm leading-6 hover:underline">
                 {item.item.display_title}
               </div>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="!rounded-none p-8">
               <DialogHeader>
                 <DialogTitle>{item.item.title}</DialogTitle>
-                <DialogDescription className="truncate-multiline">
+                <DialogDescription className="truncate-multiline indent-[28px]">
                   {item.item.brief ? item.item.brief : 'No description.'}
                 </DialogDescription>
               </DialogHeader>
@@ -76,7 +53,7 @@ export default function ItemList({ items }) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button variant="outline">
+                  <Button variant="outline" className="rounded-none shadow-none">
                     <span className="mr-2">View on NeoDB</span>
                     <ArrowTopRightIcon />
                   </Button>
@@ -94,7 +71,9 @@ export default function ItemList({ items }) {
             </DrawerTrigger>
             <DrawerContent>
               <DrawerHeader>
-                <DrawerTitle>{item.item.title}</DrawerTitle>
+                <DrawerTitle className="text-left mt-4">
+                  {item.item.title}
+                </DrawerTitle>
                 <DrawerDescription className="truncate-multiline text-left">
                   {item.item.brief ? item.item.brief : 'No description.'}
                 </DrawerDescription>
@@ -105,7 +84,7 @@ export default function ItemList({ items }) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button variant="outline">
+                  <Button variant="outline" className="rounded-none shadow-none">
                     <span className="mr-2">View on NeoDB</span>
                     <ArrowTopRightIcon />
                   </Button>
@@ -118,10 +97,7 @@ export default function ItemList({ items }) {
   }
 
   return (
-    <div
-      ref={scrollContainer}
-      className="myscroll h-[168px] lg:h-[240px] flex flex-col overflow-y-scroll"
-    >
+    <div ref={scrollContainer} className="flex flex-col">
       {renderItems()}
     </div>
   )

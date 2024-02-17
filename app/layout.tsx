@@ -1,25 +1,26 @@
 import type { Metadata } from 'next'
-import { Noto_Serif, Noto_Serif_SC } from 'next/font/google'
+
+// import { Noto_Serif, Noto_Serif_SC } from 'next/font/google'
 import { Provider } from '@/components/provider'
 
 import '@/styles/global.css'
 
-const font_serif = Noto_Serif({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-serif',
-})
+// const font_serif = Noto_Serif({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-serif',
+// })
 
-const font_serif_cn = Noto_Serif_SC({
-  display: 'swap',
-  preload: false,
-  weight: ['500', '700'],
-  variable: '--font-serif-cn',
-})
+// const font_serif_cn = Noto_Serif_SC({
+//   display: 'swap',
+//   preload: false,
+//   weight: ['500', '700'],
+//   variable: '--font-serif-cn',
+// })
 
 export const viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#dcdcdc' },
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
     { media: '(prefers-color-scheme: dark)', color: '#141414' },
   ],
   width: 'device-width',
@@ -38,7 +39,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`!font-serif antialiased ${font_serif.variable} ${font_serif_cn.variable}`}
+        // className={`!font-serif antialiased ${font_serif.variable} ${font_serif_cn.variable}`}
+        className="font-serif antialiased"
       >
         <Provider>
           {children}

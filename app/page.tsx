@@ -8,7 +8,9 @@ import categoriesConfig from '@/categoriesConfig.json'
 
 const ItemList = dynamic(() => import('../components/itemlist'), {
   ssr: false,
-  loading: () => <div className="text-black/80 dark:text-white/80">LOADING</div>,
+  loading: () => (
+    <div className="text-black/80 dark:text-white/80">LOADING</div>
+  ),
 })
 
 export default async function Home() {
@@ -18,33 +20,83 @@ export default async function Home() {
     categoriesData[category] = await getItems(category, types)
   }
 
-  return (
-    <main className="min-h-screen flex flex-col gap-16 lg:gap-24 mx-auto py-32 lg:py-48 px-8 lg:px-6 lg:max-w-xl">
-      {Object.entries(categoriesData).map(([category, items]) => {
-        const defaultTab = Object.keys(categoriesConfig[category])[0]
+  // return (
+  //   <main className="min-h-screen flex flex-col gap-16 lg:gap-24 mx-auto py-32 lg:py-48 px-8 lg:px-6 lg:max-w-xl">
+  //     {Object.entries(categoriesData).map(([category, items]) => {
+  //       const defaultTab = Object.keys(categoriesConfig[category])[0]
 
-        return (
-          <div key={category}>
-            <Tabs defaultValue={defaultTab} className="w-full">
-              <TabsList className="w-full bg-transparent text-black/40">
-                <div>
-                  {Object.entries(categoriesConfig[category]).map(
-                    ([type, title]) => (
-                      <TabsTrigger
-                        key={type}
-                        value={type}
-                        className="font-bold text-base"
-                      >
-                        {title.toString()}
-                      </TabsTrigger>
-                    ),
-                  )}
-                </div>
+  //       return (
+  //         <div key={category}>
+  //           <Tabs defaultValue={defaultTab} className="w-full">
+  //             <TabsList className="px-[12px] lg:px-[20px] bg-transparent text-black/40">
+  //               <div>
+  //                 {Object.entries(categoriesConfig[category]).map(
+  //                   ([type, title]) => (
+  //                     <TabsTrigger
+  //                       key={type}
+  //                       value={type}
+  //                       className="font-bold text-sm lg:text-base"
+  //                     >
+  //                       {title.toString()}
+  //                     </TabsTrigger>
+  //                   ),
+  //                 )}
+  //               </div>
+  //             </TabsList>
+  //             {Object.entries(categoriesConfig[category]).map(([type]) => (
+  //               <TabsContent key={type} value={type}>
+  //                 <Card className="border-[#141414] rounded-none bg-transparent shadow-none">
+  //                   <CardContent className="!p-6 lg:!p-8 lg:!pr-[26px]">
+  //                     <ItemList
+  //                       items={
+  //                         items[type + category.charAt(0) + category.slice(1)]
+  //                       }
+  //                     />
+  //                   </CardContent>
+  //                 </Card>
+  //               </TabsContent>
+  //             ))}
+  //           </Tabs>
+  //         </div>
+  //       )
+  //     })}
+  //   </main>
+  // )
+  return (
+    <main className="min-h-screen px-4 lg:px-16 py-16 lg:w-[640px] blur-[0.5px]">
+      <Tabs defaultValue="book">
+        <TabsList className="bg-transparent text-black/40 h-6">
+          {Object.keys(categoriesData).map(category => (
+            <TabsTrigger
+              key={category}
+              value={category}
+              className="font-semibold text-sm lg:text-base"
+            >
+              {category}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+
+        {Object.entries(categoriesData).map(([category, items]) => (
+          <TabsContent key={category} value={category}>
+            <Tabs defaultValue={Object.keys(categoriesConfig[category])[0]}>
+              <TabsList className="bg-transparent text-black/40 h-6">
+                {Object.entries(categoriesConfig[category]).map(
+                  ([type, title]) => (
+                    <TabsTrigger
+                      key={type}
+                      value={type}
+                      className="font-semibold text-sm lg:text-base"
+                    >
+                      {title.toString()}
+                    </TabsTrigger>
+                  ),
+                )}
               </TabsList>
               {Object.entries(categoriesConfig[category]).map(([type]) => (
                 <TabsContent key={type} value={type}>
-                  <Card className="border-none shadow-xl rounded-xl lg:rounded-2xl">
-                    <CardContent className="!p-6 lg:!p-8 lg:!pr-[26px]">
+                  <Card className="border-[#141414] rounded-none shadow-none my-16">
+                    <CardContent className="p-4">
                       <ItemList
                         items={
                           items[type + category.charAt(0) + category.slice(1)]
@@ -55,9 +107,9 @@ export default async function Home() {
                 </TabsContent>
               ))}
             </Tabs>
-          </div>
-        )
-      })}
+          </TabsContent>
+        ))}
+      </Tabs>
     </main>
   )
 }

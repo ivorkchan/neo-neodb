@@ -34,7 +34,6 @@
 
     --radius: 0.5rem;
   }
-
   @media (prefers-color-scheme: dark) {
     :root {
       --background: 0 0% 3.9%;
@@ -75,7 +74,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-y-scroll;
   }
   h1,
   h2,
@@ -89,18 +88,11 @@
 
   /* custom styles */
   .mybg {
-    /* background-image: radial-gradient(
-        rgba(255, 255, 255, 0.3) 0.5px,
-        transparent 0.5px
-      ),
-      radial-gradient(rgba(255, 255, 255, 0.1) 0.5px, #141414 0.5px);
-    background-size: 48px 48px;
-    background-position: 0 0, 24px 24px; */
-    background-color: #dcdcdc;
+    background-color: #ffffff;
   }
   @media (prefers-color-scheme: dark) {
     .mybg {
-      background-color: #363636;
+      background-color: #141414;
     }
   }
 
@@ -109,7 +101,7 @@
     text-decoration: underline;
     text-decoration-color: transparent;
     text-decoration-thickness: 2px;
-    text-underline-offset: 8px;
+    text-underline-offset: 6px;
   }
   .mytab-active {
     color: #141414;
@@ -128,16 +120,16 @@
   }
 
   /* scroll bar */
-  .myscroll::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     height: 6px;
     width: 6px;
     -webkit-border-radius: 1ex;
     @apply bg-transparent;
   }
-  .myscroll:hover::-webkit-scrollbar {
+  :hover::-webkit-scrollbar {
     @apply bg-black/10;
   }
-  .myscroll:hover::-webkit-scrollbar-thumb {
+  :hover::-webkit-scrollbar-thumb {
     -webkit-border-radius: 1ex;
     @apply bg-black/10;
   }

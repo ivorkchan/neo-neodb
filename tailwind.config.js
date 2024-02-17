@@ -14,14 +14,14 @@ module.exports = {
       },
     },
     extend: {
-      fontFamily: {
-        serif: [
-          'var(--font-serif)',
-          'var(--font-serif-cn)',
-          'ui-serif',
-          'serif',
-        ],
-      },
+      // fontFamily: {
+      //   serif: [
+      //     'var(--font-serif)',
+      //     'var(--font-serif-cn)',
+      //     'ui-serif',
+      //     'serif',
+      //   ],
+      // },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
