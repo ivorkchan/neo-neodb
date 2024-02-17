@@ -28,7 +28,6 @@ function Filter({ children }) {
       <div
         style={{
           filter: 'url("#noise-fine") url("#noise-coarse")',
-          translate3d: '0, 0, 0',
         }}
       >
         {children}
