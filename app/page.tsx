@@ -127,6 +127,7 @@ async function getItems(category, types) {
     items[typeKey] = await fetchAndMergeData([
       `${baseApiUrl}${type}?category=${category}&page=1`,
       `${baseApiUrl}${type}?category=${category}&page=2`,
+      `${baseApiUrl}${type}?category=${category}&page=3`,
     ])
   }
 

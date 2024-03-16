@@ -21,8 +21,8 @@ export const viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'NeoDB - Ivork',
-  description: 'My digital garden.',
+  title: 'basket',
+  description: 'sometimes i read.',
 }
 
 export default function RootLayout({
