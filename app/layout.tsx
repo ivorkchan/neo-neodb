@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import { Cormorant } from 'next/font/google'
+import { ViewTransitions } from 'next-view-transitions'
 import { Provider } from '@/components/provider'
 
 import '@/public/fonts/HYFangSongS/result.css'
@@ -31,15 +32,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`!font-serif ${font_serif.variable}`}
-      >
-        <Provider>
-          {children}
-          <div className="mybg fixed inset-0 w-dvw h-dvw -z-10" />
-        </Provider>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en" suppressHydrationWarning>
+        <body className={`!font-serif ${font_serif.variable}`}>
+          <Provider>
+            {children}
+            <div className="mybg fixed inset-0 w-dvw h-dvw -z-10" />
+          </Provider>
+        </body>
+      </html>
+    </ViewTransitions>
   )
 }
