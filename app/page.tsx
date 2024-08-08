@@ -21,48 +21,6 @@ export default async function Home() {
     categoriesData[category] = await getItems(category, types)
   }
 
-  // return (
-  //   <main className="min-h-screen flex flex-col gap-16 lg:gap-24 mx-auto py-32 lg:py-48 px-8 lg:px-6 lg:max-w-xl">
-  //     {Object.entries(categoriesData).map(([category, items]) => {
-  //       const defaultTab = Object.keys(categoriesConfig[category])[0]
-
-  //       return (
-  //         <div key={category}>
-  //           <Tabs defaultValue={defaultTab} className="w-full">
-  //             <TabsList className="px-[12px] lg:px-[20px] bg-transparent text-black/40">
-  //               <div>
-  //                 {Object.entries(categoriesConfig[category]).map(
-  //                   ([type, title]) => (
-  //                     <TabsTrigger
-  //                       key={type}
-  //                       value={type}
-  //                       className="font-bold text-sm lg:text-base"
-  //                     >
-  //                       {title.toString()}
-  //                     </TabsTrigger>
-  //                   ),
-  //                 )}
-  //               </div>
-  //             </TabsList>
-  //             {Object.entries(categoriesConfig[category]).map(([type]) => (
-  //               <TabsContent key={type} value={type}>
-  //                 <Card className="border-[#141414] rounded-none bg-transparent shadow-none">
-  //                   <CardContent className="!p-6 lg:!p-8 lg:!pr-[26px]">
-  //                     <ItemList
-  //                       items={
-  //                         items[type + category.charAt(0) + category.slice(1)]
-  //                       }
-  //                     />
-  //                   </CardContent>
-  //                 </Card>
-  //               </TabsContent>
-  //             ))}
-  //           </Tabs>
-  //         </div>
-  //       )
-  //     })}
-  //   </main>
-  // )
   return (
     <main className="min-h-screen px-4 mx-0 lg:mx-32 py-16 lg:w-[540px]">
       <Filter>
