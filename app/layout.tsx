@@ -1,8 +1,8 @@
-import type { Metadata } from 'next'
+import { Provider } from '@/components/provider'
 
 import { Cormorant } from 'next/font/google'
 import { ViewTransitions } from 'next-view-transitions'
-import { Provider } from '@/components/provider'
+import type { Metadata } from 'next'
 
 import '@/public/fonts/HYFangSongS/result.css'
 import '@/styles/global.css'

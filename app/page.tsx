@@ -1,11 +1,11 @@
-import React from 'react'
+import categoriesConfig from '@/categoriesConfig.json'
+import Filter from '@/components/filter'
+
+import { Card, CardContent } from '@/components/ui/card'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import dynamic from 'next/dynamic'
 
-import Filter from '@/components/filter'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Card, CardContent } from '@/components/ui/card'
-
-import categoriesConfig from '@/categoriesConfig.json'
+import React from 'react'
 
 const ItemList = dynamic(() => import('../components/itemlist'), {
   ssr: false,

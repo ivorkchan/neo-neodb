@@ -1,12 +1,7 @@
 'use client'
 
-import React, { useRef } from 'react'
-
-import { ArrowTopRightIcon } from '@radix-ui/react-icons'
-
-import useClientSideMediaQuery from '@/hooks/use-media-query'
-
 import { Button } from '@/components/ui/button'
+
 import {
   Dialog,
   DialogContent,
@@ -16,6 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
+
 import {
   Drawer,
   DrawerContent,
@@ -25,6 +21,10 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from '@/components/ui/drawer'
+
+import useClientSideMediaQuery from '@/hooks/use-media-query'
+import { ArrowTopRightIcon } from '@radix-ui/react-icons'
+import React, { useRef } from 'react'
 
 export default function ItemList({ items }) {
   const isDesktop = useClientSideMediaQuery('(min-width: 768px)')
